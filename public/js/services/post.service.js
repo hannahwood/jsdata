@@ -1,7 +1,6 @@
 'use strict';
 
 app.factory('Post', function(DS, $state) {
-	console.log('post factory is being run');
     var Post = DS.defineResource({
         name: 'posts',
         relations: {

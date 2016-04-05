@@ -13,7 +13,7 @@ var schema = new mongoose.Schema({
 		required: true,
 		select: false
 	}
-})
+});
 
 schema.methods.generateHash = function(password) {
 	return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)

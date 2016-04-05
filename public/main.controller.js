@@ -7,7 +7,6 @@ app.config(function($stateProvider) {
         controller: 'MainController',
         resolve: {
             users: function(User) {
-            	console.log('in users');
                 return User.findAll();
             },
             posts: function(Post) {
@@ -17,9 +16,14 @@ app.config(function($stateProvider) {
     });
 });
 
-app.controller('MainController', function($scope) {
-    // $scope.allPosts = posts;
-    console.log('in controller');
+app.controller('MainController', function($scope, posts, Post) {
+    $scope.allPosts = posts;
+   var postData = Post.getAll()
+Post.ejectAll() // removes all the posts from the data store
+Post.inject(postData)  // adds them back
+console.log(Post.getAll())
+
+
     /*
 		TODOS: 
 		1 - use js-data to retrieve all users and all posts
